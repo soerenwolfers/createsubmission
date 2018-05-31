@@ -7,4 +7,6 @@ This package provides a command line tool to package a LaTeX directory in a zip 
 
 At the moment this includes copying packages and libraries from the filesystem into the zip file, warning about broken references and citations, and removing auxiliary files.
 
+Usage: :code:`createsubmission <from> <to>` creates <to>.zip of directory <from>
+
 
