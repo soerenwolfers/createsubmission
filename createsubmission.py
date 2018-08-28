@@ -3,18 +3,21 @@ import sys
 import os
 import shutil
 import re
-from swutil.files import find_files,zip_dir,read_pdf
 from pathlib import Path
 import argparse
 import tempfile
 import subprocess
 import textwrap
+
+from swutil.files import find_files,zip_dir,read_pdf
+
 HOME=str(Path.home())
 TEXMF=os.path.join(HOME,'texmf')
 TEX_PACKAGES=os.path.join(TEXMF,'tex','latex')
 TEX_LIBRARIES = os.path.join(TEXMF,'bibtex','bib','base')
 AUXILIARY_FILEENDINGS=['log','aux','dvi','lof','lot','bit','idx','glo','bbl','bcf','ilg','toc','ind','out','blg','fdb_latexmk','fls','upa','upb','synctex.gz']
 FORBIDDEN_PATTERNS = {'??':'broken references','[\n?\n]':'broken citations'}
+
 def copy_to_matching_tex(src_path,target_path,pattern):
     re_pattern = re.compile(pattern)
     for file_path in find_files('*.tex',target_path,match_name=True):
