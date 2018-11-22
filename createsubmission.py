@@ -15,7 +15,7 @@ HOME=str(Path.home())
 TEXMF=os.path.join(HOME,'texmf')
 TEX_PACKAGES=os.path.join(TEXMF,'tex','latex')
 TEX_LIBRARIES = os.path.join(TEXMF,'bibtex','bib','base')
-AUXILIARY_FILEENDINGS=['log','aux','dvi','lof','lot','bit','idx','glo','bbl','bcf','ilg','toc','ind','out','blg','fdb_latexmk','fls','upa','upb','synctex.gz']
+AUXILIARY_FILEENDINGS=['log','aux','dvi','lof','lot','bit','idx','glo','bib','bcf','ilg','toc','ind','out','blg','fdb_latexmk','fls','upa','upb','synctex.gz']
 FORBIDDEN_PATTERNS = {'??':'broken references','[\n?\n]':'broken citations'}
 
 def copy_to_matching_tex(src_path,target_path,pattern):
@@ -66,7 +66,7 @@ def create_submission(fromm,to,bibliography='library.bib'):
                     subprocess.run(['bibtex',os.path.basename(file_path)])
                     subprocess.run(['pdflatex','--interaction=nonstopmode',os.path.basename(file_path)])
                     subprocess.run(['pdflatex','--interaction=nonstopmode',os.path.basename(file_path)])
-                except exception:
+                except Exception:
                     cont = input(f'Error during compilation. Continue?')
                     if cont not in ['y','Y']:
                         sys.exit()
